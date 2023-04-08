@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Messages />
+    <router-view />
   </div>
 </template>
 <style scoped>
@@ -8,11 +8,8 @@
 </style>
 <script lang="ts">
 import { defineComponent } from 'vue'
-import Messages from './components/Messages.vue'
 
 export default defineComponent({
-  components: {
-    Messages
-  }
+  name: 'App'
 })
 </script>
