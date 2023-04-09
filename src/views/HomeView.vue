@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
+import AppHeader from '@/components/AppHeader.vue'
+import HomeNavigation from '@/components/HomeNavigation.vue'
 </script>
 
 <template>
+  <AppHeader />
   <main>
-    <TheWelcome />
+    <HomeNavigation />
   </main>
 </template>
