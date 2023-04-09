@@ -31,6 +31,12 @@ main {
   overflow-x: hidden;
   overflow-y: scroll;
 }
+a {
+  text-decoration: none;
+  &:hover {
+    opacity: 0.6;
+  }
+}
 </style>
 <script lang="ts">
 import { defineComponent } from 'vue'
