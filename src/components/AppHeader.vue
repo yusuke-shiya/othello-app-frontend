@@ -1,17 +1,35 @@
 <template>
   <header class="app-header">
+    <BackButton v-if="showBackButton" @back="onBack" />
     <h1 class="title">OthelloT</h1>
   </header>
 </template>
 
 <script lang="ts">
-export default {
-  name: 'AppHeader'
-}
+import { defineComponent } from 'vue'
+import BackButton from './BackButton.vue'
+export default defineComponent({
+  name: 'AppHeader',
+  components: {
+    BackButton
+  },
+  props: {
+    showBackButton: {
+      type: Boolean,
+      default: true
+    }
+  },
+  methods: {
+    onBack() {
+      this.$router.back()
+    }
+  }
+})
 </script>
 
 <style scoped lang="scss">
 .app-header {
+  position: relative;
   color: #333;
   text-align: center;
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);

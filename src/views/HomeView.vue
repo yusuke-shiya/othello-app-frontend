@@ -4,7 +4,7 @@ import HomeNavigation from '@/components/HomeNavigation.vue'
 </script>
 
 <template>
-  <AppHeader />
+  <AppHeader :show-back-button="false" />
   <main>
     <HomeNavigation />
   </main>
