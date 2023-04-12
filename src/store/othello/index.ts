@@ -6,7 +6,7 @@ import { actions } from './actions'
 export const othelloModule = {
   namespaced: true,
   state: initialState,
-  getters: getters,
-  mutations: mutations,
-  actions: actions
+  getters,
+  mutations,
+  actions
 }
