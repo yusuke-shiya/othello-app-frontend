@@ -5,7 +5,9 @@ export const initialState: OthelloState = {
     .fill(null)
     .map(() => Array(8).fill(null)),
   currentPlayer: 'black',
-  blackScore: 2,
-  whiteScore: 2,
+  score: {
+    black: 2,
+    white: 2
+  },
   isGameOver: false
 }
