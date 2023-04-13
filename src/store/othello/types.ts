@@ -1,7 +1,7 @@
 export type PlayerColor = 'black' | 'white'
-export type OthelloBoardCell = PlayerColor | null
+export type OthelloCell = PlayerColor | null
 export interface OthelloState {
-  board: OthelloBoardCell[][]
+  board: OthelloCell[][]
   currentPlayer: PlayerColor
   score: {
     black: number
