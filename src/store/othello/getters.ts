@@ -1,6 +1,7 @@
+import type { GetterTree } from 'vuex'
 import type { OthelloState, PlayerColor } from './types'
 
-export const getters = {
+export const getters: GetterTree<OthelloState, {}> = {
   getBoard(state: OthelloState) {
     return state.board
   },
