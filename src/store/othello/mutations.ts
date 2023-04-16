@@ -1,7 +1,7 @@
-import type { OthelloCell, PlayerColor, OthelloState } from './types'
+import type { OthelloBoard, PlayerColor, OthelloState } from './types'
 
 export const mutations = {
-  setBoard(state: OthelloState, payload: OthelloCell[][]) {
+  setBoard(state: OthelloState, payload: OthelloBoard) {
     state.board = payload
   },
   setCurrentPlayer(state: OthelloState, payload: PlayerColor) {
