@@ -1,3 +1,4 @@
+import { BOARD_SIZE } from '@/constants'
 import type { OthelloBoard, PlayerColor, OthelloState } from './types'
 
 export const mutations = {
@@ -14,9 +15,9 @@ export const mutations = {
     state.isGameOver = payload
   },
   initializeBoard(state: OthelloState) {
-    state.board = Array(8)
+    state.board = Array(BOARD_SIZE)
       .fill(null)
-      .map(() => Array(8).fill('empty'))
+      .map(() => Array(BOARD_SIZE).fill('empty'))
     state.board[3][3] = 'white'
     state.board[4][4] = 'white'
     state.board[3][4] = 'black'
