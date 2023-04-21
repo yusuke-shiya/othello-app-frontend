@@ -28,6 +28,7 @@ header {
 }
 main {
   height: calc(100svh - 60px);
+  padding: 5%;
   overflow-x: hidden;
   overflow-y: scroll;
 }
