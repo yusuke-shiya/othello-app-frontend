@@ -1,10 +1,9 @@
 <template>
   <AppHeader />
   <main>
-    <TurnIndicator />
-    <ScoreBoard />
     <OthelloBoard />
     <ResultDialog />
+    <TurnIndicator />
   </main>
 </template>
 
@@ -12,16 +11,14 @@
 import { defineComponent } from 'vue'
 import { mapMutations } from 'vuex'
 import AppHeader from '@/components/AppHeader.vue'
-import TurnIndicator from '@/components/TurnIndicator.vue'
-import ScoreBoard from '@/components/ScoreBoard.vue'
 import OthelloBoard from '@/components/OthelloBoard.vue'
 import ResultDialog from '@/components/ResultDialog.vue'
+import TurnIndicator from '@/components/TurnIndicator.vue'
 
 export default defineComponent({
   components: {
     AppHeader,
     TurnIndicator,
-    ScoreBoard,
     OthelloBoard,
     ResultDialog
   },

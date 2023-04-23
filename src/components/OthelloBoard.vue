@@ -16,6 +16,7 @@
 .board {
   border: 2px solid #000;
   border-bottom: none;
+  margin-bottom: 12px;
   .row {
     display: flex;
   }
