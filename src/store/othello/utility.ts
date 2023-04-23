@@ -86,7 +86,7 @@ export function flipStones(
   return newBoard
 }
 
-export function getScore(state: OthelloState): OthelloState['score'] {
+export function countScore(state: OthelloState): OthelloState['score'] {
   const players = Object.keys(state.score) as PlayerColor[]
   const score = state.board
     .flat()
