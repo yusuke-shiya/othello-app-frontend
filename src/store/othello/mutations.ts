@@ -8,8 +8,8 @@ export const mutations = {
   setCurrentPlayer(state: OthelloState, payload: PlayerColor) {
     state.currentPlayer = payload
   },
-  setScore(state: OthelloState, payload: { color: PlayerColor; score: number }) {
-    state.score[payload.color] = payload.score
+  setScore(state: OthelloState, payload: OthelloState['score']) {
+    state.score = payload
   },
   setIsGameOver(state: OthelloState, payload: boolean) {
     state.isGameOver = payload
