@@ -1,7 +1,7 @@
 import type { ActionTree } from 'vuex'
 import type { OthelloState } from './types'
 import type { RootState } from '../index'
-import { isValidMove, flipStones, countScore } from './utility'
+import { isValidMove, flipStones, countStones } from './utility'
 
 export const actions: ActionTree<OthelloState, RootState> = {
   putStone({ state, commit }, { row, column }) {
@@ -19,7 +19,7 @@ export const actions: ActionTree<OthelloState, RootState> = {
     commit('setCurrentPlayer', nextPlayer)
 
     // スコアを更新する
-    const score = countScore(state)
+    const score = countStones(state)
     commit('setScore', score)
   }
 }
