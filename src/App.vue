@@ -6,6 +6,7 @@ body {
   background-color: #787878;
 }
 #app {
+  position: relative;
   max-width: 100%;
   width: 390px;
   margin: 0 auto;

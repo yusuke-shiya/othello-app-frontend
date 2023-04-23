@@ -52,6 +52,17 @@ export function isValidMove(
   return false
 }
 
+export function hasValidMoves(board: OthelloBoard, player: PlayerColor): boolean {
+  for (let row = 0; row < board.length; row++) {
+    for (let column = 0; column < board[row].length; column++) {
+      if (isValidMove(board, row, column, player)) {
+        return true
+      }
+    }
+  }
+  return false
+}
+
 export function flipStones(
   board: OthelloBoard,
   row: number,
