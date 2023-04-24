@@ -1,5 +1,10 @@
 <template>
-  <div class="result-dialog" v-if="isGameOver">{{ message }}</div>
+  <div class="result-dialog" v-if="isGameOver">
+    <div class="message">
+      {{ message }}
+    </div>
+    <ScoreBoard />
+  </div>
 </template>
 <style lang="scss" scoped>
 .result-dialog {
@@ -8,19 +13,31 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.5);
+  padding: 5%;
+  background: rgba(255, 255, 255, 0.95);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   font-size: 52px;
   font-weight: bold;
   letter-spacing: 2px;
 }
+.message {
+  font-size: 2.7vw;
+  white-space: nowrap;
+  margin-bottom: 12px;
+}
 </style>
 <script lang="ts">
 import { defineComponent } from 'vue'
 import type { OthelloState } from '@/store/othello/types'
+import ScoreBoard from '@/components/ScoreBoard.vue'
 export default defineComponent({
+  name: 'ResultDialog',
+  components: {
+    ScoreBoard
+  },
   computed: {
     currentPlayer(): OthelloState['currentPlayer'] {
       return this.$store.getters['othello/getCurrentPlayer']

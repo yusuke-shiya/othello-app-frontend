@@ -1,19 +1,18 @@
 <template>
   <div class="score-board">
-    <span :class="currentPlayer === 'black' ? 'current-player' : ''">● {{ score.black }}</span>
-    <span :class="currentPlayer === 'white' ? 'current-player' : ''">○ {{ score.white }}</span>
+    <span>● {{ score.black }}</span>
+    <span>○ {{ score.white }}</span>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .score-board {
   display: flex;
-  margin-bottom: 12px;
-  span {
-    margin-right: 8px;
-    &.current-player {
-      border-bottom: 2px solid #000;
-    }
+  justify-content: center;
+  width: 100%;
+  font-size: 1.8vw;
+  span:not(:last-child) {
+    margin-right: 40px;
   }
 }
 </style>
