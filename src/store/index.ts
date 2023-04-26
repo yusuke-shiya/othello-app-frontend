@@ -1,16 +1,17 @@
-import { createStore } from 'vuex'
+import { createStore, Store } from 'vuex'
+import { othelloModule } from './othello'
+import type { OthelloState } from './othello/types'
 
-export default createStore({
-  state: {
-    // ここに状態を定義します。
-  },
-  mutations: {
-    // ここに状態を変更するミューテーションを定義します。
-  },
-  actions: {
-    // ここに非同期アクションを定義します。
-  },
+export interface RootState {
+  othello: OthelloState
+}
+
+export const store = createStore<RootState>({
   modules: {
-    // ここにサブモジュールを定義します。
+    othello: othelloModule
   }
 })
+
+export function useStore(): Store<RootState> {
+  return store
+}
