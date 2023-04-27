@@ -1,9 +1,36 @@
 import type { ActionTree } from 'vuex'
-import type { OthelloState } from './types'
+import type { OthelloState, PlayerColor } from './types'
 import type { RootState } from '../index'
 import { isValidMove, flipStones, countStones, hasValidMoves } from './utility'
+import { BOARD_SIZE } from '@/constants'
 
+const initStones: [number, number, PlayerColor][] = [
+  [3, 3, 'white'],
+  [4, 4, 'white'],
+  [3, 4, 'black'],
+  [4, 3, 'black']
+]
 export const actions: ActionTree<OthelloState, RootState> = {
+  initialize({ commit }) {
+    const emptyBoard = Array(BOARD_SIZE)
+      .fill(null)
+      .map(() => Array(BOARD_SIZE).fill('empty'))
+    const initialBoard = emptyBoard.map((row, rowIndex) => {
+      return row.map((cell, columnIndex) => {
+        return (
+          initStones.find(([row, column]) => rowIndex === row && columnIndex === column)?.[2] ||
+          cell
+        )
+      })
+    })
+    commit('setBoard', initialBoard)
+    const initialScore = {
+      black: 2,
+      white: 2
+    }
+    commit('setScore', initialScore)
+    commit('setCurrentPlayer', 'black')
+  },
   putStone({ state, commit }, { row, column }) {
     // 石を置くことができるかどうかをチェック
     if (!isValidMove(state.board, row, column, state.currentPlayer)) return
