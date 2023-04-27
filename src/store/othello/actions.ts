@@ -45,10 +45,9 @@ export const actions: ActionTree<OthelloState, RootState> = {
     const nextPlayer = state.currentPlayer === 'black' ? 'white' : 'black'
     if (hasValidMoves(updatedBoard, nextPlayer)) {
       commit('setCurrentPlayer', nextPlayer)
-    } else if (hasValidMoves(updatedBoard, state.currentPlayer)) {
+    } else if (!hasValidMoves(updatedBoard, state.currentPlayer)) {
       // 次のプレイヤーが置けるマスがない場合、現在のプレイヤーが置けるマスがあるか確認
       // 置けるマスがある場合、プレイヤーは交代せずに続行
-    } else {
       // どちらのプレイヤーも置けるマスがない場合、ゲームを終了
       commit('setIsGameOver', true)
     }
