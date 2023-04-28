@@ -48,7 +48,7 @@ export default defineComponent({
     message(): String {
       const isGameOver: Boolean = this.$store.getters['othello/getIsGameOver']
       const score: OthelloState['score'] = this.$store.getters['othello/getScore']
-      const winner = Math.max(...Object.values(score)) === score.black ? 'black' : 'white'
+      const winner = Math.max(...Object.values(score)) === score.black ? 'Black' : 'White'
       if (isGameOver) {
         if (score.black === score.white) {
           return 'Draw!'

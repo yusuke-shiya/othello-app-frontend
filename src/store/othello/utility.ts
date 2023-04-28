@@ -70,6 +70,7 @@ export function flipStones(
   currentPlayer: PlayerColor
 ): OthelloBoard {
   const newBoard = JSON.parse(JSON.stringify(board))
+  if (!isValidMove(board, row, column, currentPlayer)) return newBoard
 
   newBoard[row][column] = currentPlayer
   // 8方向に対して、ひっくり返せる石があればひっくり返す

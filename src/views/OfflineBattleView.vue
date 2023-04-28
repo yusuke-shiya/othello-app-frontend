@@ -9,7 +9,6 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { mapMutations } from 'vuex'
 import AppHeader from '@/components/AppHeader.vue'
 import OthelloBoard from '@/components/OthelloBoard.vue'
 import ResultDialog from '@/components/ResultDialog.vue'
@@ -23,10 +22,12 @@ export default defineComponent({
     ResultDialog
   },
   created() {
-    this.initializeBoard()
+    this.$store.dispatch('othello/initialize')
   },
-  methods: {
-    ...mapMutations('othello', ['initializeBoard'])
+  computed: {
+    score(): { black: number; white: number } {
+      return this.$store.getters['othello/getScore']
+    }
   }
 })
 </script>
