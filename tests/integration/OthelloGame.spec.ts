@@ -112,8 +112,8 @@ describe('統合テスト', () => {
       ['black', 'black', 'black', 'black', 'black', 'black', 'black', 'black'],
       ['black', 'black', 'black', 'black', 'black', 'black', 'black', 'black'],
       ['black', 'black', 'black', 'black', 'black', 'black', 'black', 'black'],
-      ['black', 'black', 'black', 'black', 'black', 'black', 'black', 'black'],
-      ['black', 'black', 'black', 'black', 'black', 'black', 'black', 'black'],
+      ['black', 'black', 'black', 'black', 'black', 'black', 'black', 'white'],
+      ['black', 'black', 'black', 'black', 'black', 'black', 'white', 'black'],
       ['black', 'black', 'black', 'black', 'black', 'white', 'black', 'black'],
       ['black', 'black', 'black', 'white', 'empty', 'empty', 'white', 'white']
     ]
@@ -129,12 +129,13 @@ describe('統合テスト', () => {
       ['black', 'black', 'black', 'black', 'black', 'black', 'black', 'black'],
       ['black', 'black', 'black', 'black', 'black', 'black', 'black', 'black'],
       ['black', 'black', 'black', 'black', 'black', 'black', 'black', 'black'],
-      ['black', 'black', 'black', 'black', 'black', 'black', 'black', 'black'],
-      ['black', 'black', 'black', 'black', 'black', 'black', 'black', 'black'],
-      ['black', 'black', 'black', 'black', 'black', 'black', 'black', 'black'],
+      ['black', 'black', 'black', 'black', 'black', 'black', 'black', 'white'],
+      ['black', 'black', 'black', 'black', 'black', 'black', 'white', 'black'],
+      ['black', 'black', 'black', 'black', 'black', 'white', 'black', 'black'],
       ['black', 'black', 'black', 'black', 'black', 'empty', 'white', 'white']
     ]
     expect(store.getters['othello/getBoard']).toEqual(expectedBoardAfterBlackMove)
+    expect(store.getters['othello/getScore']).toEqual({ black: 58, white: 5 })
     // パスが発生し、プレイヤーが黒のままであることを確認
     expect(store.getters['othello/getCurrentPlayer']).toBe('black')
 
