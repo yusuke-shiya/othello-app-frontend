@@ -27,7 +27,6 @@ describe('OthelloCellComponent.vue', () => {
     await wrapper.trigger('click')
 
     expect(wrapper.emitted().cellClicked).toBeTruthy()
-    console.log(wrapper.emitted().cellClicked.length)
     expect(wrapper.emitted().cellClicked[0]).toEqual([{ row: 0, column: 0 }])
   })
 })
