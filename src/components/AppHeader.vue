@@ -5,9 +5,18 @@
   </header>
 </template>
 <style lang="scss" scoped>
-.title {
-  img {
-    height: 38px;
+.app-header {
+  position: relative;
+  z-index: 2;
+  color: #333;
+  text-align: center;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+  .title {
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 2px;
+    img {
+      height: 38px;
+    }
   }
 }
 </style>
@@ -32,17 +41,3 @@ export default defineComponent({
   }
 })
 </script>
-
-<style scoped lang="scss">
-.app-header {
-  position: relative;
-  z-index: 2;
-  color: #333;
-  text-align: center;
-  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
-  .title {
-    font-family: 'Oswald', sans-serif;
-    letter-spacing: 2px;
-  }
-}
-</style>
