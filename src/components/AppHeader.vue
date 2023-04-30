@@ -1,7 +1,7 @@
 <template>
   <header class="app-header">
     <BackButton v-if="showBackButton" @back="onBack" />
-    <h1 class="title"><img src="@/assets/logo.png" alt="OthelloT" /></h1>
+    <h1 class="title"><img src="@/assets/logo.jpg" alt="OthelloT" /></h1>
   </header>
 </template>
 <style lang="scss" scoped>
