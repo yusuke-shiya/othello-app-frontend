@@ -1,6 +1,7 @@
 <template>
   <AppHeader />
   <main>
+    <OnlineStatusMessage />
     <OthelloBoard />
     <ResultDialog />
     <TurnIndicator />
@@ -13,13 +14,15 @@ import AppHeader from '@/components/AppHeader.vue'
 import OthelloBoard from '@/components/OthelloBoard.vue'
 import ResultDialog from '@/components/ResultDialog.vue'
 import TurnIndicator from '@/components/TurnIndicator.vue'
+import OnlineStatusMessage from '@/components/OnlineStatusMessage.vue'
 
 export default defineComponent({
   components: {
     AppHeader,
     TurnIndicator,
     OthelloBoard,
-    ResultDialog
+    ResultDialog,
+    OnlineStatusMessage
   },
   created() {
     this.$store.dispatch('othello/initialize')
