@@ -36,6 +36,7 @@ export default defineComponent({
 <style scoped lang="scss">
 .app-header {
   position: relative;
+  z-index: 2;
   color: #333;
   text-align: center;
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
