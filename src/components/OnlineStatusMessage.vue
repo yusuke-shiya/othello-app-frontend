@@ -1,7 +1,13 @@
 <template>
-  <div v-if="battleStatus !== 'playing' && battleStatus !== 'finished'" class="messageBox">
+  <div
+    v-if="battleStatus !== 'finished'"
+    class="messageBox"
+    :class="{
+      hidden: battleStatus === 'playing'
+    }"
+  >
     <div v-if="battleStatus === 'waiting'" class="waiting">相手のプレイヤーを待っています</div>
-    <div v-if="battleStatus === 'starting'" class="starting">対戦を開始します</div>
+    <div v-if="battleStatus === 'playing'" class="starting">対戦を開始します</div>
   </div>
 </template>
 
@@ -24,6 +30,10 @@
       animation: ellipsis 1.25s infinite;
     }
   }
+  &.hidden {
+    pointer-events: none;
+    animation: hidden 2s forwards;
+  }
   @keyframes ellipsis {
     0% {
       content: '';
@@ -36,6 +46,17 @@
     }
     75% {
       content: '...';
+    }
+  }
+  @keyframes hidden {
+    0% {
+      opacity: 1;
+    }
+    70% {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
     }
   }
 }
