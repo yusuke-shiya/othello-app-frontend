@@ -1,3 +1,3 @@
 export interface OnlineState {
-  battleStatus: 'waiting' | 'starting' | 'playing' | 'finished'
+  battleStatus: 'waiting' | 'playing' | 'finished'
 }
