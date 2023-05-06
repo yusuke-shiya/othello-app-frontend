@@ -10,6 +10,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import type { OnlineState } from '@/store/online/types'
 import { consumer } from '@/actioncable'
 import AppHeader from '@/components/AppHeader.vue'
 import OthelloBoard from '@/components/OthelloBoard.vue'
@@ -53,9 +54,11 @@ export default defineComponent({
           disconnected: () => {
             console.log('Disconnected from OthelloChannel')
           },
-          received: (data: Object) => {
+          received: (data: OnlineState) => {
             // 受信したデータを処理
             console.log('Received data:', data)
+            // storeを更新
+            this.$store.commit('online/setBattleStatus', data.battleStatus)
           }
         }
       )
