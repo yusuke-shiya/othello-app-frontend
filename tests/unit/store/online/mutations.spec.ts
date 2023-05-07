@@ -15,4 +15,9 @@ describe('OthelloMutations', () => {
     mutations.setBattleStatus(state, newBattleStatus)
     expect(state.battleStatus).toBe(newBattleStatus)
   })
+  test('setMyColorがmyColorを正しく設定できる', () => {
+    const newMyColor = 'white'
+    mutations.setMyColor(state, newMyColor)
+    expect(state.myColor).toBe(newMyColor)
+  })
 })
