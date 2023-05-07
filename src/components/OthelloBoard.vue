@@ -38,7 +38,17 @@ export default defineComponent({
   },
   methods: {
     handleCellClicked({ row, column }: { row: number; column: number }) {
+      // オンライン対戦中（myColorが定義されている）だったら、相手のターンの時は石を置けないようにする
+      if (
+        this.$store.getters['online/getMyColor'] &&
+        this.$store.getters['online/getMyColor'] !== this.$store.getters['othello/getCurrentPlayer']
+      ) {
+        return
+      }
+
       this.$store.dispatch('othello/putStone', { row, column })
+      // Rails側に石が置かれた情報を送信
+      this.$emit('stonePlaced', this.board)
     }
   }
 })
