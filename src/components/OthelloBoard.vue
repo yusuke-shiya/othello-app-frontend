@@ -34,21 +34,23 @@ export default defineComponent({
   computed: {
     board(): OthelloBoard {
       return this.$store.getters['othello/getBoard']
+    },
+    isOnlineBattle(): boolean {
+      return !!this.$store.getters['online/getMyColor']
+    },
+    isOpponentTurn(): boolean {
+      return (
+        this.$store.getters['othello/getCurrentPlayer'] !== this.$store.getters['online/getMyColor']
+      )
     }
   },
   methods: {
     handleCellClicked({ row, column }: { row: number; column: number }) {
-      // オンライン対戦中（myColorが定義されている）だったら、相手のターンの時は石を置けないようにする
-      if (
-        this.$store.getters['online/getMyColor'] &&
-        this.$store.getters['online/getMyColor'] !== this.$store.getters['othello/getCurrentPlayer']
-      ) {
-        return
-      }
-
+      // オンライン対戦中で相手のターンだった場合は何もしない
+      if (this.isOnlineBattle && this.isOpponentTurn) return
+      // オフライン対戦中か、自分のターンだった場合は石を置く
       this.$store.dispatch('othello/putStone', { row, column })
-      // Rails側に石が置かれた情報を送信
-      this.$emit('stonePlaced', this.board)
+      this.$emit('stonePlaced')
     }
   }
 })

@@ -18,11 +18,10 @@ import OthelloBoard from '@/components/OthelloBoard.vue'
 import ResultDialog from '@/components/ResultDialog.vue'
 import TurnIndicator from '@/components/TurnIndicator.vue'
 import OnlineStatusMessage from '@/components/OnlineStatusMessage.vue'
-import type { OthelloBoard as OthelloBoardType, PlayerColor } from '@/store/othello/types'
+import type { OthelloState } from '@/store/othello/types'
 
 interface ReceivedData extends OnlineState {
-  board?: OthelloBoardType
-  currentPlayer?: PlayerColor
+  othello: Partial<OthelloState>
 }
 
 export default defineComponent({
@@ -64,32 +63,47 @@ export default defineComponent({
           received: (data: ReceivedData) => {
             // 受信したデータを処理
             console.log('Received data:', data)
-            // 自分の色をセット
-            if (data.myColor) {
-              this.$store.commit('online/setMyColor', data.myColor)
-            }
-            // battleStatusを更新
-            if (data.battleStatus) {
-              this.$store.commit('online/setBattleStatus', data.battleStatus)
-            }
-            // オセロの状態を更新
-            // boardを更新
-            if (data.board) {
-              this.$store.commit('othello/setBoard', data.board)
-            }
-            // currentPlayerを更新
-            if (data.currentPlayer) {
-              this.$store.commit('othello/setCurrentPlayer', data.currentPlayer)
-            }
+            this.handleReceivedData(data)
           }
         }
       )
     },
-    handleStonePlaced(board: OthelloBoardType) {
+    handleReceivedData(data: ReceivedData) {
+      // 自分の色をセット
+      if (data.myColor) {
+        this.$store.commit('online/setMyColor', data.myColor)
+      }
+      // battleStatusを更新
+      if (data.battleStatus) {
+        this.$store.commit('online/setBattleStatus', data.battleStatus)
+      }
+      // オセロの状態を更新
+      if (!data.othello) return
+      const othelloData = data.othello
+      // boardを更新
+      if (othelloData.board) {
+        this.$store.commit('othello/setBoard', othelloData.board)
+      }
+      // currentPlayerを更新
+      if (othelloData.currentPlayer) {
+        this.$store.commit('othello/setCurrentPlayer', othelloData.currentPlayer)
+      }
+      // scoreを更新
+      if (othelloData.score) {
+        this.$store.commit('othello/setScore', othelloData.score)
+      }
+      // isGameOverを更新
+      if (othelloData.isGameOver) {
+        this.$store.commit('othello/setIsGameOver', othelloData.isGameOver)
+      }
+    },
+    handleStonePlaced() {
       if (!this.othelloChannel) return
       this.othelloChannel.send({
-        board,
-        currentPlayer: this.$store.getters['othello/getCurrentPlayer']
+        board: this.$store.getters['othello/getBoard'],
+        currentPlayer: this.$store.getters['othello/getCurrentPlayer'],
+        score: this.$store.getters['othello/getScore'],
+        isGameOver: this.$store.getters['othello/getIsGameOver']
       })
     }
   }
