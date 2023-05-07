@@ -23,17 +23,14 @@ describe('OnlineStatusMessage.vue', () => {
     expect(wrapper.find('.waiting').exists()).toBe(true)
   })
 
-  test('battleStatusが"starting"だったら対戦開始メッセージが表示される', () => {
-    const wrapper = createWrapper('starting')
+  test('battleStatusが"playing"だったら開始メッセージが表示される', () => {
+    const wrapper = createWrapper('playing')
     expect(wrapper.find('.starting').exists()).toBe(true)
   })
 
-  test('battleStatusが"playing"か"finished"だったらレンダリングされない', () => {
-    // battleStatusが"playing"の場合
-    let wrapper = createWrapper('playing')
-    expect(wrapper.find('.messageBox').exists()).toBe(false)
+  test('battleStatusが"finished"だったらレンダリングされない', () => {
     // battleStatusが"finished"の場合
-    wrapper = createWrapper('finished')
+    const wrapper = createWrapper('finished')
     expect(wrapper.find('.messageBox').exists()).toBe(false)
   })
 })
